@@ -36,7 +36,26 @@ class Inventory(object):
         map(self.count, self.data )
 
         print(self.count_2 * self.count_3)
+
+
+    def common_between_two_boxes(self):
+        max_common_letters = None
+        for k,v in enumerate(self.data):
+            for i in self.data[k+1:]:
+                common_num = 0
+                common_letters = []
+                for indx in range(len(v)):
+                    if i[indx] == v[indx]:
+                        common_num += 1
+                        common_letters.append(i[indx])
+
+                if not max_common_letters or len(max_common_letters) < common_num: 
+                    max_common_letters = common_letters
+
+        print("".join(max_common_letters))
     
 if __name__ == "__main__":
-    fire.Fire(Inventory(['abcdef', 'bababc', 'abbcde', 'abcccd', 'aabcdd', 'abcdee', 'ababab']))
+    # fire.Fire(Inventory(['abcdef', 'bababc', 'abbcde', 'abcccd', 'aabcdd', 'abcdee', 'ababab']))
+
+    fire.Fire(Inventory(['abcde', 'fghij', 'klmno', 'pqrst', 'fguij', 'axcye', 'wvxyz']))
     fire.Fire(Inventory())
