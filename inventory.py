@@ -32,7 +32,7 @@ class Inventory(object):
 
 
     def check_sum(self):
-        // part 1
+        # part 1
         map(self.count, self.data )
 
         print(self.count_2 * self.count_3)
