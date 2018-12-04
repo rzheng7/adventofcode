@@ -1,4 +1,5 @@
 import fire
+from collections import Counter
 
 class Inventory(object):
 
@@ -27,18 +28,27 @@ class Inventory(object):
         self.count_2 += cc[0]
         self.count_3 += cc[1]
 
+
+    def count2(self, s):
+        
+        if 2 in Counter(s).values():
+            self.count_2 += 1 
+        if 3 in Counter(s).values():
+            self.count_3 += 1
+
     def print_data(self):
         print(self.data)
 
 
     def check_sum(self):
         # part 1
-        map(self.count, self.data )
+        map(self.count2, self.data )
 
         print(self.count_2 * self.count_3)
 
 
     def common_between_two_boxes(self):
+        # day 2 part II
         max_common_letters = None
         for k,v in enumerate(self.data):
             for i in self.data[k+1:]:
@@ -57,5 +67,5 @@ class Inventory(object):
 if __name__ == "__main__":
     # fire.Fire(Inventory(['abcdef', 'bababc', 'abbcde', 'abcccd', 'aabcdd', 'abcdee', 'ababab']))
 
-    fire.Fire(Inventory(['abcde', 'fghij', 'klmno', 'pqrst', 'fguij', 'axcye', 'wvxyz']))
+    # fire.Fire(Inventory(['abcde', 'fghij', 'klmno', 'pqrst', 'fguij', 'axcye', 'wvxyz']))
     fire.Fire(Inventory())
