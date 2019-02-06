@@ -7,8 +7,7 @@ def subset_matrix(matrix, row, col):
     cp_m = deepcopy(matrix)
     del cp_m[row]
     for el in cp_m:
-        del el[col]
-        ret_matrix.append(el)
+        ret_matrix.append(el[:col]+el[col+1:])
 
     return ret_matrix
 
